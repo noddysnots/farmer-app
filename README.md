@@ -1,2 +1,2 @@
-# farmer-app
+farmer-app
 Verification
