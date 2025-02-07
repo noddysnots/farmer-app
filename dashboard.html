@@ -4,6 +4,7 @@
     <title>Varaha Earth - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .phone-frame {
             width: 375px;
@@ -17,130 +18,156 @@
             width: 100%;
             height: 100%;
             overflow-y: auto;
-            background: white;
+            background: #f0f4f8;
         }
         .section-header {
             background-color: #dbeafe;
-            padding: 8px;
-            margin-top: 1px;
+            padding: 12px;
+            font-weight: 500;
+            margin-top: 2px;
             cursor: pointer;
         }
         .section-content {
             display: none;
-            padding: 8px;
+            background: white;
+        }
+        .form-group {
+            padding: 12px;
             border-bottom: 1px solid #e5e7eb;
         }
-        .nested-item {
-            padding: 8px;
-            margin-left: 16px;
-            border-bottom: 1px solid #e5e7eb;
+        .radio-group label {
+            display: block;
+            padding: 8px 0;
         }
     </style>
     <script>
         function toggleSection(id) {
-            const content = document.getElementById(id);
-            const sections = document.getElementsByClassName('section-content');
-            Array.from(sections).forEach(section => {
-                if(section.id !== id) section.style.display = 'none';
-            });
-            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            document.querySelectorAll('.section-content').forEach(el => el.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
         }
     </script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="phone-frame">
         <div class="phone-screen">
-            <header class="bg-white shadow px-4 py-3">
-                <div class="text-lg">Hello, Sarthak</div>
+            <header class="bg-white shadow-sm p-4">
+                <h1 class="text-xl font-medium">Hello, Sarthak</h1>
             </header>
 
-            <main class="pb-16">
-                <!-- Farmer Info -->
-                <div class="section-header" onclick="toggleSection('farmerInfo')">Farmer Info</div>
-                <div id="farmerInfo" class="section-content">
-                    <div class="nested-item">
-                        <label>Name</label>
-                        <input class="w-full mt-1 p-2 border rounded" type="text">
-                    </div>
-                    <div class="nested-item">
-                        <label>Full Address</label>
-                        <input class="w-full mt-1 p-2 border rounded" type="text">
-                    </div>
-                    <div class="nested-item">
-                        <label>District</label>
-                        <input class="w-full mt-1 p-2 border rounded" type="text">
-                    </div>
-                    <div class="nested-item">
-                        <label>State</label>
-                        <input class="w-full mt-1 p-2 border rounded" type="text">
-                    </div>
-                    <div class="nested-item">
-                        <label>Landmark</label>
-                        <input class="w-full mt-1 p-2 border rounded" type="text">
-                    </div>
-                    <div class="nested-item">
-                        <label>Upload Aadhaar Card Photo</label>
-                        <input type="file" class="mt-1" accept="image/*" capture="camera">
+            <div class="section-header" onclick="toggleSection('farmerInfo')">Farmer Info</div>
+            <div id="farmerInfo" class="section-content">
+                <div class="form-group">
+                    <label class="block mb-2">Name</label>
+                    <input type="text" class="w-full p-2 border rounded">
+                </div>
+                <div class="form-group">
+                    <label class="block mb-2">Full Address</label>
+                    <textarea class="w-full p-2 border rounded" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="block mb-2">District</label>
+                    <input type="text" class="w-full p-2 border rounded">
+                </div>
+                <div class="form-group">
+                    <label class="block mb-2">State</label>
+                    <input type="text" class="w-full p-2 border rounded">
+                </div>
+                <div class="form-group">
+                    <label class="block mb-2">Landmark</label>
+                    <input type="text" class="w-full p-2 border rounded">
+                </div>
+                <div class="form-group">
+                    <label class="block mb-2">Upload Aadhaar Card Photo</label>
+                    <input type="file" accept="image/*" capture="camera">
+                </div>
+            </div>
+
+            <div class="section-header" onclick="toggleSection('fieldInfo')">Field Info</div>
+            <div id="fieldInfo" class="section-content">
+                <div class="form-group">
+                    <label class="block mb-2">Area Registered (Acres)</label>
+                    <input type="number" step="0.01" class="w-full p-2 border rounded">
+                </div>
+                <div class="form-group">
+                    <label class="block mb-2">Any Issues?</label>
+                    <textarea class="w-full p-2 border rounded" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="block mb-2">Upload Field Record Photo</label>
+                    <input type="file" accept="image/*" capture="camera">
+                </div>
+            </div>
+
+            <div class="section-header" onclick="toggleSection('surveyInfo')">Survey Info</div>
+            <div id="surveyInfo" class="section-content">
+                <div class="form-group">
+                    <label class="block mb-2">Surveyor Name</label>
+                    <select class="w-full p-2 border rounded">
+                        <option>Select Surveyor</option>
+                        <option>Aditya</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="block mb-2">Was Survey Done?</label>
+                    <select class="w-full p-2 border rounded">
+                        <option>Select</option>
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="block mb-2">Tillage Info</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="tillage" class="mr-2"> Zero Tillage
+                        </label>
+                        <label>
+                            <input type="radio" name="tillage" class="mr-2"> With Tillage
+                        </label>
                     </div>
                 </div>
 
-                <!-- Field Info -->
-                <div class="section-header" onclick="toggleSection('fieldInfo')">Field Info</div>
-                <div id="fieldInfo" class="section-content">
-                    <div class="nested-item">
-                        <label>Area Registered</label>
-                        <input class="w-full mt-1 p-2 border rounded" type="number" step="0.01">
-                    </div>
-                    <div class="nested-item">
-                        <label>Any Issues</label>
-                        <textarea class="w-full mt-1 p-2 border rounded" rows="3"></textarea>
-                    </div>
-                    <div class="nested-item">
-                        <label>Upload Field Record Photo</label>
-                        <input type="file" class="mt-1" accept="image/*" capture="camera">
+                <div class="form-group">
+                    <label class="block mb-2">Transplanted Rice Info</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="rice" class="mr-2"> PTR
+                        </label>
+                        <label>
+                            <input type="radio" name="rice" class="mr-2"> DSR
+                        </label>
                     </div>
                 </div>
 
-                <!-- Survey Info -->
-                <div class="section-header" onclick="toggleSection('surveyInfo')">Survey Info</div>
-                <div id="surveyInfo" class="section-content">
-                    <div class="nested-item">
-                        <label>Surveyor Info</label>
-                        <input class="w-full mt-1 p-2 border rounded" type="text">
-                    </div>
-                    <div class="nested-item">
-                        <label>Tillage</label>
-                        <select class="w-full mt-1 p-2 border rounded">
-                            <option value="zero">Zero Till</option>
-                            <option value="with">With Till</option>
-                        </select>
-                    </div>
-                    <div class="nested-item">
-                        <label>PTR/DSR</label>
-                        <div class="mt-1 space-y-2">
-                            <label class="flex items-center">
-                                <input type="checkbox" class="mr-2"> PTR
-                            </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="mr-2"> DSR
-                            </label>
-                        </div>
-                    </div>
-                    <div class="nested-item">
-                        <label>Residue Info</label>
-                        <select class="w-full mt-1 p-2 border rounded">
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
+                <div class="form-group">
+                    <label class="block mb-2">Was residue put back to soil?</label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="residue" class="mr-2"> Yes
+                        </label>
+                        <label>
+                            <input type="radio" name="residue" class="mr-2"> No (Burnt)
+                        </label>
+                        <label>
+                            <input type="radio" name="residue" class="mr-2"> No (Food for Cattle)
+                        </label>
                     </div>
                 </div>
+            </div>
 
-                <button class="w-full bg-blue-100 text-black py-2 mt-4">Submit</button>
-            </main>
+            <button class="w-full bg-green-600 text-white py-3 mt-4 text-lg font-medium">
+                Submit
+            </button>
 
-            <footer class="fixed bottom-0 left-0 right-0 flex border-t bg-blue-100">
-                <button class="flex-1 py-3 text-center border-r">Need Help?</button>
-                <button class="flex-1 py-3 text-center">Call us</button>
+            <footer class="fixed bottom-0 left-0 right-0 flex bg-blue-100 border-t">
+                <button class="flex-1 py-4 text-center border-r text-base font-medium">
+                    Need Help?
+                </button>
+                <button class="flex-1 py-4 text-center text-base font-medium">
+                    <i class="fas fa-phone-alt mr-2"></i>Contact Us
+                </button>
             </footer>
         </div>
     </div>
