@@ -12,134 +12,126 @@
             border-radius: 56px;
             overflow: hidden;
             position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
         }
         .phone-screen {
             width: 100%;
             height: 100%;
             overflow-y: auto;
+            background: white;
         }
-        @media (max-width: 640px) {
-            .phone-frame {
-                width: 100%;
-                height: 100vh;
-                border: none;
-                border-radius: 0;
-            }
+        .info-item {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+        }
+        .info-item.expandable::after {
+            content: '>';
+            margin-left: auto;
+            color: #9ca3af;
         }
     </style>
     <script>
-        function handleSubmit(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            console.log(data);
-            alert("Form submitted successfully!");
+        function expandSection(id) {
+            const section = document.getElementById(id);
+            if(section.style.display === 'none') {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
         }
     </script>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="phone-frame bg-white">
+    <div class="phone-frame">
         <div class="phone-screen">
-            <div class="min-h-full bg-gray-50 pb-16">
-                <header class="bg-white shadow-sm">
-                    <div class="px-4 py-4">
-                        <h1 class="text-lg font-semibold">Welcome, Farmer</h1>
-                    </div>
-                </header>
+            <header class="bg-white shadow px-4 py-3">
+                <div class="text-lg font-medium">Sarthak Pant</div>
+            </header>
 
-                <main class="px-4 py-4">
-                    <form onsubmit="handleSubmit(event)" class="space-y-4">
-                        <!-- Farmer Info Section -->
-                        <section class="bg-white p-4 rounded-lg shadow">
-                            <h2 class="text-lg font-semibold mb-4">Farmer Info</h2>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Name</label>
-                                    <input name="farmerName" class="w-full px-3 py-2 border rounded-lg text-base">
-                                </div>
-                                
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Address</label>
-                                    <textarea name="address" class="w-full px-3 py-2 border rounded-lg text-base" rows="3"></textarea>
-                                </div>
+            <main class="pb-16">
+                <!-- Farmer Info -->
+                <div class="bg-blue-50 p-2">
+                    <h2 class="font-medium">Farmer Info</h2>
+                </div>
+                <div onclick="expandSection('nameForm')" class="info-item expandable">Name</div>
+                <form id="nameForm" class="p-4 bg-gray-50" style="display: none;">
+                    <input class="w-full p-2 border rounded" placeholder="Enter name">
+                    <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded">Save</button>
+                </form>
 
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Aadhaar Upload</label>
-                                    <input type="file" name="aadhaar" class="w-full text-sm" accept="image/*" capture="camera">
-                                </div>
-                            </div>
-                        </section>
+                <div onclick="expandSection('addressForm')" class="info-item expandable">Address</div>
+                <div id="addressForm" class="p-4 bg-gray-50" style="display: none;">
+                    <input class="w-full p-2 border rounded mb-2" placeholder="Full Address">
+                    <input class="w-full p-2 border rounded mb-2" placeholder="District">
+                    <input class="w-full p-2 border rounded mb-2" placeholder="State">
+                    <input class="w-full p-2 border rounded mb-2" placeholder="Landmark">
+                    <button class="px-4 py-2 bg-green-600 text-white rounded">Save</button>
+                </div>
 
-                        <!-- Field Info Section -->
-                        <section class="bg-white p-4 rounded-lg shadow">
-                            <h2 class="text-lg font-semibold mb-4">Field Info</h2>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Area (Acres)</label>
-                                    <input name="area" type="number" step="0.01" class="w-full px-3 py-2 border rounded-lg text-base">
-                                </div>
+                <div onclick="expandSection('aadhaarForm')" class="info-item expandable">Upload Aadhaar Card Photo</div>
+                <div id="aadhaarForm" class="p-4 bg-gray-50" style="display: none;">
+                    <input type="file" accept="image/*" capture="camera">
+                    <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded">Upload</button>
+                </div>
 
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Any Issues?</label>
-                                    <textarea name="issues" class="w-full px-3 py-2 border rounded-lg text-base" rows="3"></textarea>
-                                </div>
+                <!-- Field Info -->
+                <div class="bg-blue-50 p-2">
+                    <h2 class="font-medium">Field Info</h2>
+                </div>
+                <div onclick="expandSection('areaForm')" class="info-item expandable">Area Registered</div>
+                <div id="areaForm" class="p-4 bg-gray-50" style="display: none;">
+                    <input type="number" class="w-full p-2 border rounded" placeholder="Enter area">
+                    <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded">Save</button>
+                </div>
 
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Field Photo</label>
-                                    <input type="file" name="fieldPhoto" class="w-full text-sm" accept="image/*" capture="camera">
-                                </div>
-                            </div>
-                        </section>
+                <div onclick="expandSection('issuesForm')" class="info-item expandable">Any Issues</div>
+                <div id="issuesForm" class="p-4 bg-gray-50" style="display: none;">
+                    <textarea class="w-full p-2 border rounded" rows="3"></textarea>
+                    <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded">Save</button>
+                </div>
 
-                        <!-- Survey Info Section -->
-                        <section class="bg-white p-4 rounded-lg shadow">
-                            <h2 class="text-lg font-semibold mb-4">Survey Info</h2>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Surveyor Info</label>
-                                    <input name="surveyorInfo" class="w-full px-3 py-2 border rounded-lg text-base">
-                                </div>
+                <!-- Survey Info -->
+                <div class="bg-blue-50 p-2">
+                    <h2 class="font-medium">Survey Info</h2>
+                </div>
+                <div onclick="expandSection('surveyorForm')" class="info-item expandable">Surveyor Info</div>
+                <div id="surveyorForm" class="p-4 bg-gray-50" style="display: none;">
+                    <input class="w-full p-2 border rounded" placeholder="Enter surveyor info">
+                    <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded">Save</button>
+                </div>
 
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Tillage</label>
-                                    <select name="tillage" class="w-full px-3 py-2 border rounded-lg text-base">
-                                        <option value="zero">Zero Till</option>
-                                        <option value="with">With Till</option>
-                                    </select>
-                                </div>
+                <div onclick="expandSection('tillageForm')" class="info-item expandable">Tillage (Zero/With Till)</div>
+                <div id="tillageForm" class="p-4 bg-gray-50" style="display: none;">
+                    <select class="w-full p-2 border rounded">
+                        <option>Zero Till</option>
+                        <option>With Till</option>
+                    </select>
+                    <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded">Save</button>
+                </div>
 
-                                <div class="flex gap-6">
-                                    <label class="flex items-center">
-                                        <input type="checkbox" name="ptr" class="mr-2 h-5 w-5">
-                                        <span class="text-base">PTR</span>
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="checkbox" name="dsr" class="mr-2 h-5 w-5">
-                                        <span class="text-base">DSR</span>
-                                    </label>
-                                </div>
+                <div onclick="expandSection('ptrDsrForm')" class="info-item expandable">PTR/DSR</div>
+                <div id="ptrDsrForm" class="p-4 bg-gray-50" style="display: none;">
+                    <label class="block mb-2">
+                        <input type="checkbox" class="mr-2"> PTR
+                    </label>
+                    <label class="block mb-2">
+                        <input type="checkbox" class="mr-2"> DSR
+                    </label>
+                    <button class="px-4 py-2 bg-green-600 text-white rounded">Save</button>
+                </div>
 
-                                <div>
-                                    <label class="block text-gray-700 mb-2">Residue Info</label>
-                                    <textarea name="residueInfo" class="w-full px-3 py-2 border rounded-lg text-base" rows="3"></textarea>
-                                </div>
-                            </div>
-                        </section>
+                <div onclick="expandSection('residueForm')" class="info-item expandable">Residue Info</div>
+                <div id="residueForm" class="p-4 bg-gray-50" style="display: none;">
+                    <textarea class="w-full p-2 border rounded" rows="3"></textarea>
+                    <button class="mt-2 px-4 py-2 bg-green-600 text-white rounded">Save</button>
+                </div>
+            </main>
 
-                        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 text-base">
-                            Submit
-                        </button>
-                    </form>
-                </main>
-
-                <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-up p-4">
-                    <div class="flex justify-center gap-4">
-                        <a href="index.html" class="px-4 py-2 text-green-600 hover:bg-green-50 rounded text-base">Logout</a>
-                        <button class="px-4 py-2 text-green-600 hover:bg-green-50 rounded text-base">Need Help?</button>
-                    </div>
-                </nav>
-            </div>
+            <footer class="fixed bottom-0 left-0 right-0 flex border-t bg-white">
+                <button class="flex-1 py-3 text-center border-r hover:bg-gray-50">Need Help</button>
+                <button class="flex-1 py-3 text-center hover:bg-gray-50">Call us</button>
+            </footer>
         </div>
     </div>
 </body>
