@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Varaha Earth - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <script>
         function handleSubmit(event) {
@@ -14,93 +15,93 @@
     </script>
 </head>
 <body>
-    <div class="min-h-screen bg-gray-50">
+    <div class="min-h-screen bg-gray-50 pb-16">
         <header class="bg-white shadow-sm">
             <div class="max-w-7xl mx-auto px-4 py-4">
-                <h1 class="text-xl font-semibold">Welcome, Farmer</h1>
+                <h1 class="text-lg md:text-xl font-semibold">Welcome, Farmer</h1>
             </div>
         </header>
 
-        <main class="max-w-7xl mx-auto px-4 py-8">
-            <form onsubmit="handleSubmit(event)" class="space-y-8">
+        <main class="max-w-7xl mx-auto px-4 py-4 md:py-8">
+            <form onsubmit="handleSubmit(event)" class="space-y-4 md:space-y-8">
                 <!-- Farmer Info Section -->
-                <section class="bg-white p-6 rounded-lg shadow">
-                    <h2 class="text-xl font-semibold mb-4">Farmer Info</h2>
+                <section class="bg-white p-4 md:p-6 rounded-lg shadow">
+                    <h2 class="text-lg md:text-xl font-semibold mb-4">Farmer Info</h2>
                     <div class="space-y-4">
                         <div>
                             <label class="block text-gray-700 mb-2">Name</label>
-                            <input name="farmerName" class="w-full px-4 py-2 border rounded-lg">
+                            <input name="farmerName" class="w-full px-3 py-2 md:px-4 md:py-2 border rounded-lg text-base">
                         </div>
                         
                         <div>
                             <label class="block text-gray-700 mb-2">Address</label>
-                            <textarea name="address" class="w-full px-4 py-2 border rounded-lg" rows="3"></textarea>
+                            <textarea name="address" class="w-full px-3 py-2 md:px-4 md:py-2 border rounded-lg text-base" rows="3"></textarea>
                         </div>
 
                         <div>
                             <label class="block text-gray-700 mb-2">Aadhaar Upload</label>
-                            <input type="file" name="aadhaar" class="w-full">
+                            <input type="file" name="aadhaar" class="w-full text-sm md:text-base" accept="image/*" capture="camera">
                         </div>
                     </div>
                 </section>
 
                 <!-- Field Info Section -->
-                <section class="bg-white p-6 rounded-lg shadow">
-                    <h2 class="text-xl font-semibold mb-4">Field Info</h2>
+                <section class="bg-white p-4 md:p-6 rounded-lg shadow">
+                    <h2 class="text-lg md:text-xl font-semibold mb-4">Field Info</h2>
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-gray-700 mb-2">Area Registered</label>
-                            <input name="area" class="w-full px-4 py-2 border rounded-lg">
+                            <label class="block text-gray-700 mb-2">Area (Acres)</label>
+                            <input name="area" type="number" step="0.01" class="w-full px-3 py-2 md:px-4 md:py-2 border rounded-lg text-base">
                         </div>
 
                         <div>
                             <label class="block text-gray-700 mb-2">Any Issues?</label>
-                            <textarea name="issues" class="w-full px-4 py-2 border rounded-lg" rows="3"></textarea>
+                            <textarea name="issues" class="w-full px-3 py-2 md:px-4 md:py-2 border rounded-lg text-base" rows="3"></textarea>
                         </div>
 
                         <div>
-                            <label class="block text-gray-700 mb-2">Field Record Photo</label>
-                            <input type="file" name="fieldPhoto" class="w-full">
+                            <label class="block text-gray-700 mb-2">Field Photo</label>
+                            <input type="file" name="fieldPhoto" class="w-full text-sm md:text-base" accept="image/*" capture="camera">
                         </div>
                     </div>
                 </section>
 
                 <!-- Survey Info Section -->
-                <section class="bg-white p-6 rounded-lg shadow">
-                    <h2 class="text-xl font-semibold mb-4">Survey Info</h2>
+                <section class="bg-white p-4 md:p-6 rounded-lg shadow">
+                    <h2 class="text-lg md:text-xl font-semibold mb-4">Survey Info</h2>
                     <div class="space-y-4">
                         <div>
                             <label class="block text-gray-700 mb-2">Surveyor Info</label>
-                            <input name="surveyorInfo" class="w-full px-4 py-2 border rounded-lg">
+                            <input name="surveyorInfo" class="w-full px-3 py-2 md:px-4 md:py-2 border rounded-lg text-base">
                         </div>
 
                         <div>
                             <label class="block text-gray-700 mb-2">Tillage</label>
-                            <select name="tillage" class="w-full px-4 py-2 border rounded-lg">
+                            <select name="tillage" class="w-full px-3 py-2 md:px-4 md:py-2 border rounded-lg text-base">
                                 <option value="zero">Zero Till</option>
                                 <option value="with">With Till</option>
                             </select>
                         </div>
 
-                        <div class="flex gap-4">
+                        <div class="flex gap-6">
                             <label class="flex items-center">
-                                <input type="checkbox" name="ptr" class="mr-2">
-                                PTR
+                                <input type="checkbox" name="ptr" class="mr-2 h-5 w-5">
+                                <span class="text-base">PTR</span>
                             </label>
                             <label class="flex items-center">
-                                <input type="checkbox" name="dsr" class="mr-2">
-                                DSR
+                                <input type="checkbox" name="dsr" class="mr-2 h-5 w-5">
+                                <span class="text-base">DSR</span>
                             </label>
                         </div>
 
                         <div>
                             <label class="block text-gray-700 mb-2">Residue Info</label>
-                            <textarea name="residueInfo" class="w-full px-4 py-2 border rounded-lg" rows="3"></textarea>
+                            <textarea name="residueInfo" class="w-full px-3 py-2 md:px-4 md:py-2 border rounded-lg text-base" rows="3"></textarea>
                         </div>
                     </div>
                 </section>
 
-                <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
+                <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 text-base">
                     Submit
                 </button>
             </form>
@@ -108,8 +109,8 @@
 
         <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-up p-4">
             <div class="max-w-7xl mx-auto flex justify-center gap-4">
-                <a href="index.html" class="px-4 py-2 text-green-600 hover:bg-green-50 rounded">Logout</a>
-                <button class="px-4 py-2 text-green-600 hover:bg-green-50 rounded">Need Help?</button>
+                <a href="index.html" class="px-4 py-2 text-green-600 hover:bg-green-50 rounded text-base">Logout</a>
+                <button class="px-4 py-2 text-green-600 hover:bg-green-50 rounded text-base">Need Help?</button>
             </div>
         </nav>
     </div>
