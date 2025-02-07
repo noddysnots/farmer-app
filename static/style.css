@@ -1,0 +1,25 @@
+@import 'https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css';
+
+/* Custom Shadows */
+.shadow-up {
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Form Styles */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #059669;
+    ring-color: #059669;
+}
+
+/* File Upload Button */
+input[type="file"] {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+/* Checkbox Styles */
+input[type="checkbox"] {
+    color: #059669;
+}
