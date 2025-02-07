@@ -19,11 +19,12 @@
             height: 100%;
             overflow-y: auto;
             background: white;
-            padding-bottom: 70px;
+            padding-bottom: 120px;
         }
         .section-header {
             background-color: #dbeafe;
-            padding: 12px;
+            padding: 16px;
+            font-size: 16px;
             font-weight: 500;
             cursor: pointer;
             border-bottom: 1px solid #fff;
@@ -31,7 +32,7 @@
         .section-content {
             display: none;
             background: white;
-            padding: 12px;
+            padding: 16px;
         }
         .form-control {
             width: 100%;
@@ -41,14 +42,21 @@
             border-radius: 4px;
         }
         .form-group {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
         .radio-group {
             margin: 8px 0;
         }
         .radio-group label {
             display: block;
-            padding: 8px 0;
+            padding: 10px 0;
+        }
+        .submit-btn {
+            position: fixed;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            background-color: #059669;
         }
     </style>
     <script>
@@ -61,11 +69,13 @@
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="phone-frame">
         <div class="phone-screen">
-            <header class="bg-white p-4 border-b">
+            <header class="bg-white p-5 border-b">
                 <h1 class="text-xl">Hello, Sarthak</h1>
             </header>
 
-            <div class="section-header" onclick="toggleSection('farmerInfo')">Farmer Info</div>
+            <div class="section-header" onclick="toggleSection('farmerInfo')">
+                <i class="fas fa-user mr-2"></i>Farmer Info
+            </div>
             <div id="farmerInfo" class="section-content">
                 <div class="form-group">
                     <label>Name</label>
@@ -89,11 +99,13 @@
                 </div>
                 <div class="form-group">
                     <label>Upload Aadhaar Card Photo</label>
-                    <input type="file" accept="image/*" capture="camera" class="mt-1">
+                    <input type="file" accept="image/*" capture="camera" class="mt-2">
                 </div>
             </div>
 
-            <div class="section-header" onclick="toggleSection('fieldInfo')">Field Info</div>
+            <div class="section-header" onclick="toggleSection('fieldInfo')">
+                <i class="fas fa-map-marker-alt mr-2"></i>Field Info
+            </div>
             <div id="fieldInfo" class="section-content">
                 <div class="form-group">
                     <label>Area Registered (Acres)</label>
@@ -105,11 +117,13 @@
                 </div>
                 <div class="form-group">
                     <label>Upload Field Record Photo</label>
-                    <input type="file" accept="image/*" capture="camera" class="mt-1">
+                    <input type="file" accept="image/*" capture="camera" class="mt-2">
                 </div>
             </div>
 
-            <div class="section-header" onclick="toggleSection('surveyInfo')">Survey Info</div>
+            <div class="section-header" onclick="toggleSection('surveyInfo')">
+                <i class="fas fa-clipboard-check mr-2"></i>Survey Info
+            </div>
             <div id="surveyInfo" class="section-content">
                 <div class="form-group">
                     <label>Surveyor Name</label>
@@ -128,7 +142,9 @@
                 </div>
             </div>
 
-            <div class="section-header" onclick="toggleSection('tillageInfo')">Tillage Info</div>
+            <div class="section-header" onclick="toggleSection('tillageInfo')">
+                <i class="fas fa-tractor mr-2"></i>Tillage Info
+            </div>
             <div id="tillageInfo" class="section-content">
                 <div class="radio-group">
                     <label>
@@ -140,7 +156,9 @@
                 </div>
             </div>
 
-            <div class="section-header" onclick="toggleSection('riceInfo')">Transplanted Rice Info</div>
+            <div class="section-header" onclick="toggleSection('riceInfo')">
+                <i class="fas fa-seedling mr-2"></i>Transplanted Rice Info
+            </div>
             <div id="riceInfo" class="section-content">
                 <div class="radio-group">
                     <label>
@@ -152,7 +170,9 @@
                 </div>
             </div>
 
-            <div class="section-header" onclick="toggleSection('residueInfo')">Residue Info</div>
+            <div class="section-header" onclick="toggleSection('residueInfo')">
+                <i class="fas fa-leaf mr-2"></i>Residue Info
+            </div>
             <div id="residueInfo" class="section-content">
                 <div class="radio-group">
                     <label>
@@ -167,13 +187,13 @@
                 </div>
             </div>
 
-            <button class="w-full bg-green-600 text-white py-3 font-medium text-lg">
+            <button class="submit-btn w-full text-white py-4 font-medium text-lg">
                 Submit
             </button>
 
             <footer class="fixed bottom-0 left-0 right-0 grid grid-cols-2 border-t bg-blue-100">
                 <button class="py-4 text-center border-r hover:bg-blue-200">
-                    Need Help?
+                    <i class="fas fa-question-circle mr-2"></i>Need Help?
                 </button>
                 <button class="py-4 text-center hover:bg-blue-200">
                     <i class="fas fa-phone-alt mr-2"></i>Contact Us
